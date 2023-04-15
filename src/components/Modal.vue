@@ -2,11 +2,15 @@
   <div class="blackBg" v-if="modalOpen == true">
     <div class="whiteBg">
       <!-- props는 read-only임 재할당하면 안됨 예를 들어 modalOpen = false 같이 -->
-      <button>닫기</button>
+      <button @click="$emit('openModal')">닫기</button>
       <img :src="property[clickNum].image" class="modalImg" />
       <h4>{{ property[clickNum].title }}</h4>
       <p>{{ property[clickNum].content }}</p>
-      <p>{{ property[clickNum].price }}</p>
+      <!-- <input @input="month = $event.target.value" /> -->
+      <input v-model.number="month" />
+      <p>
+        {{ month }} 개월 선택한 금액 = {{ property[clickNum].price * month }}
+      </p>
     </div>
   </div>
 </template>
@@ -21,7 +25,9 @@ export default {
     modalOpen: Boolean,
   },
   data() {
-    return {};
+    return {
+      month: 1,
+    };
   },
 };
 </script>

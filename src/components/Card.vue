@@ -1,7 +1,7 @@
 <template>
   <div>
     <img :src="property.image" class="roomImg" />
-    <h4 class="logo">
+    <h4 @click="$emit('openModal', property.id)">
       {{ property.title }}
     </h4>
     <p>{{ property.price }}</p>

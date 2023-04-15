@@ -1,6 +1,11 @@
 <template>
   <div>
-    <Modal :property="property" :clickNum="clickNum" :modalOpen="modalOpen" />
+    <Modal
+      @openModal="modalOpen = false"
+      :property="property"
+      :clickNum="clickNum"
+      :modalOpen="modalOpen"
+    />
     <div class="menu">
       <!-- 자료안의 데이터 갯수만큼 반복됨 -->
       <!-- 그럼 작명한 변수는 데이터안의 자료가 됨 -->
@@ -28,7 +33,15 @@
         </h4>
       </div> -->
 
-      <Card :property="property[i]" v-for="(room, i) in property" :key="i" />
+      <Card
+        @openModal="
+          modalOpen = true;
+          clickNum = $event;
+        "
+        :property="property[i]"
+        v-for="(room, i) in property"
+        :key="i"
+      />
     </div>
   </div>
 </template>
