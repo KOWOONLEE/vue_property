@@ -1,11 +1,13 @@
 <template>
   <div>
-    <Modal
-      @openModal="modalOpen = false"
-      :property="property"
-      :clickNum="clickNum"
-      :modalOpen="modalOpen"
-    />
+    <div class="start" :class="{ end: modalOpen }">
+      <Modal
+        @openModal="modalOpen = false"
+        :property="property"
+        :clickNum="clickNum"
+        :modalOpen="modalOpen"
+      />
+    </div>
     <div class="menu">
       <!-- 자료안의 데이터 갯수만큼 반복됨 -->
       <!-- 그럼 작명한 변수는 데이터안의 자료가 됨 -->
@@ -102,5 +104,12 @@ div {
 .menu a {
   color: white;
   padding: 10px;
+}
+.start {
+  opacity: 0;
+  transition: all 1s;
+}
+.end {
+  opacity: 1;
 }
 </style>

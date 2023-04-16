@@ -29,6 +29,14 @@ export default {
       month: 1,
     };
   },
+  watch: {
+    month(num) {
+      if (isNaN(num) == true) {
+        alert("문자입력하지마");
+        this.month = 1;
+      }
+    },
+  },
 };
 </script>
 
