@@ -13,7 +13,10 @@
       <!-- 그럼 작명한 변수는 데이터안의 자료가 됨 -->
       <a v-for="menu in menus" :key="menu">{{ menu }}</a>
     </div>
-    <Discount />
+    <Discount v-if="showDiscount == true" />
+
+    <button @click="priceSort">가격순 정렬</button>
+    <button @click="sortBack">원래대로</button>
 
     <div id="app">
       <!-- <div>
@@ -62,15 +65,31 @@ export default {
       스타일: "color: blue",
       menus: ["Home", "Shop", "About"],
       products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
+      propertyOrigin: [...property],
       property: property,
       신고수: [0, 0, 0],
       modalOpen: false,
       clickNum: 0,
+      showDiscount: true,
     };
   },
   // 함수 만드는 공간 정해져 있음 : data끝나는 부분
   // 함수 안에서 데이터 쓸 때 this.데이터명
-  methods: {},
+  methods: {
+    priceSort() {
+      this.property.sort(function (a, b) {
+        return a.price - b.price;
+      });
+    },
+    sortBack() {
+      this.property = [...this.propertyOrigin];
+    },
+  },
+  mounted() {
+    setTimeout(() => {
+      this.showDiscount = false;
+    }, 30000);
+  },
 
   components: {
     Discount: Discount,

@@ -37,6 +37,12 @@ export default {
       }
     },
   },
+  beforeUpdate() {
+    if (this.month == 2) {
+      alert("우리는 3개월 이상만 해요.");
+      this.month = 3;
+    }
+  },
 };
 </script>
 

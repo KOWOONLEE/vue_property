@@ -1,10 +1,20 @@
 <template>
-  <div class="discount"><h4>지금 결제하면 20% 할인</h4></div>
+  <div class="discount">
+    <h4>지금 결제하면 {{ time }}% 할인</h4>
+  </div>
 </template>
 
 <script>
 export default {
   name: "DISCOUNT",
+  data() {
+    return { time: 30 };
+  },
+  mounted() {
+    setInterval(() => {
+      this.time--;
+    }, 1000);
+  },
 };
 </script>
 
